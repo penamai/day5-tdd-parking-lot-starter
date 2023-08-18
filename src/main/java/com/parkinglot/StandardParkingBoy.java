@@ -12,12 +12,6 @@ public class StandardParkingBoy {
     }
 
     public static Car fetch(ParkingLot parkingLot, ParkingTicket parkingTicket) {
-        Car fetchedCar;
-        try {
-            fetchedCar = parkingLot.fetch(parkingTicket);
-        } catch (UnrecognizedTicketException unrecognizedTicketException) {
-            throw new UnrecognizedTicketException();
-        }
-        return fetchedCar;
+        return parkingLot.fetch(parkingTicket);
     }
 }
