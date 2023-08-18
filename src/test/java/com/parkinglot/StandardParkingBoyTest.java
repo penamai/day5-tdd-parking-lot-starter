@@ -16,6 +16,7 @@ public class StandardParkingBoyTest {
     private ParkingLot parkingLot2;
     private List<ParkingLot> managedParkingLot;
     private Car car;
+    private Car secondCar;
 
     @BeforeEach
     void initializeGiven(){
@@ -25,6 +26,7 @@ public class StandardParkingBoyTest {
 
         standardParkingBoy = new StandardParkingBoy(managedParkingLot);
         car = new Car();
+        secondCar = new Car();
     }
     @Test
     void should_return_parkingTicket_when_park_given_standardParkingBoy_parkingLot_and_car() {
@@ -104,11 +106,26 @@ public class StandardParkingBoyTest {
         parkingLot1 = new ParkingLot(1);
         managedParkingLot = List.of(parkingLot1,parkingLot2);
         standardParkingBoy = new StandardParkingBoy(managedParkingLot);
-        Car secondCar = new Car();
 
         standardParkingBoy.park(car);
         standardParkingBoy.park(secondCar);
 
         Assertions.assertEquals(9, parkingLot2.getAvailableCapacity());
+    }
+
+    @Test
+    void should_return_right_car_when_fetch_car_twice_given_standardParkingBoy_and_two_parking_lots_and_two_parking_tickets() {
+        parkingLot1 = new ParkingLot(1);
+        managedParkingLot = List.of(parkingLot1,parkingLot2);
+        standardParkingBoy = new StandardParkingBoy(managedParkingLot);
+
+        ParkingTicket firstParkingTicket = standardParkingBoy.park(car);
+        ParkingTicket secondParkingTicket = standardParkingBoy.park(secondCar);
+
+        Car fetchedFirstCar = standardParkingBoy.fetch(firstParkingTicket);
+        Car fetchedSecondCar = standardParkingBoy.fetch(secondParkingTicket);
+
+        Assertions.assertEquals(car, fetchedFirstCar);
+        Assertions.assertEquals(secondCar, fetchedSecondCar);
     }
 }
