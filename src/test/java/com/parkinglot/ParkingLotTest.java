@@ -3,6 +3,10 @@ package com.parkinglot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class ParkingLotTest {
 
     @Test
@@ -84,17 +88,13 @@ public class ParkingLotTest {
     void should_return_nothing_when_park_given_parkingLot_with_maxed_out_capacity_of_10() {
         //given
         ParkingLot parkingLot = new ParkingLot();
-        Car[] parkedCars = new Car[10];
+        List<Car> parkedCars = Arrays.asList(new Car[10]);
         Car car = new Car();
 
-        for (int index = 0; index < 10; index++){
-            parkedCars[index] = new Car();
-        }
+        IntStream.range(0,10).forEach(index -> parkedCars.set(index, new Car()));
 
         //when
-        for (Car parkedCar: parkedCars){
-            parkingLot.park(parkedCar);
-        }
+        parkedCars.forEach(parkingLot::park);
         ParkingTicket parkingTicket = parkingLot.park(car);
 
         //then
