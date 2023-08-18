@@ -79,4 +79,25 @@ public class ParkingLotTest {
         //then
         Assertions.assertNull(fetchedCarTwice);
     }
+
+    @Test
+    void should_return_nothing_when_park_given_parkingLot_with_maxed_out_capacity_of_10() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car[] parkedCars = new Car[10];
+        Car car = new Car();
+
+        for (int index = 0; index < 10; index++){
+            parkedCars[index] = new Car();
+        }
+
+        //when
+        for (Car parkedCar: parkedCars){
+            parkingLot.park(parkedCar);
+        }
+        ParkingTicket parkingTicket = parkingLot.park(car);
+
+        //then
+        Assertions.assertNull(parkingTicket);
+    }
 }
