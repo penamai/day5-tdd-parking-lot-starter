@@ -1,5 +1,7 @@
 package com.parkinglot;
 
+import com.parkinglot.exceptions.UnrecognizedTicketException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,9 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
+        if(ticketAssignment.get(parkingTicket) == null){
+            throw new UnrecognizedTicketException();
+        }
         return ticketAssignment.remove(parkingTicket);
     }
 }
