@@ -4,8 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final int capacity = 10;
+    public static final int DEFAULT_CAPACITY = 10;
+    private final int capacity;
     private final Map<ParkingTicket, Car> ticketAssignment = new HashMap<>();
+
+    public ParkingLot(){
+        this.capacity = DEFAULT_CAPACITY;
+    }
+
+    public ParkingLot(int capacity){
+        this.capacity = capacity;
+    }
 
     public ParkingTicket park(Car car) {
         if(ticketAssignment.size() >= capacity)
@@ -17,8 +26,6 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        Car fetchedCar = ticketAssignment.get(parkingTicket);
-        ticketAssignment.remove(parkingTicket);
-        return fetchedCar;
+        return ticketAssignment.remove(parkingTicket);
     }
 }
