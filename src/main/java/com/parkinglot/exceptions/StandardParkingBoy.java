@@ -12,4 +12,8 @@ public class StandardParkingBoy {
     public static ParkingTicket park(ParkingLot parkingLot, Car car) {
         return parkingLot.park(car);
     }
+
+    public static Car fetch(ParkingLot parkingLot, ParkingTicket parkingTicket) {
+        return parkingLot.fetch(parkingTicket);
+    }
 }

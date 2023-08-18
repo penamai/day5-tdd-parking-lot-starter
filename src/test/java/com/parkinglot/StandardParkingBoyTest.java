@@ -19,4 +19,19 @@ public class StandardParkingBoyTest {
         //then
         Assertions.assertNotNull(parkingTicket);
     }
+
+    @Test
+    void should_return_parkedCar_when_fetch_given_standardParkingBoy_parkingLot_and_parkingTicket() {
+        //given
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+
+        //when
+        ParkingTicket parkingTicket = StandardParkingBoy.park(parkingLot, car);
+        Car fetchedCar = StandardParkingBoy.fetch(parkingLot, parkingTicket);
+
+        //then
+        Assertions.assertEquals(car, fetchedCar);
+    }
 }
