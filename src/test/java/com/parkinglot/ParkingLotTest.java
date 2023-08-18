@@ -59,7 +59,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_fetch_given_wrong_parkingTicket() {
+    void should_return_unrecognizedTicketException_when_fetch_given_wrong_parkingTicket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
@@ -75,7 +75,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_fetch_given_used_parkingTicket() {
+    void should_return_unrecognizedTicketException_when_fetch_given_used_parkingTicket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
@@ -91,7 +91,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_park_given_parkingLot_with_maxed_out_capacity_of_10() {
+    void should_return_noAvailablePositionException_when_park_given_parkingLot_with_maxed_out_capacity_of_10() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
         List<Car> parkedCars = Arrays.asList(new Car[10]);
