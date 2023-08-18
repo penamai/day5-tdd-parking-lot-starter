@@ -1,17 +1,34 @@
 package com.parkinglot;
 
+import com.parkinglot.exceptions.NoAvailablePositionException;
 import com.parkinglot.exceptions.UnrecognizedTicketException;
 
+import java.util.List;
+
 public class StandardParkingBoy {
+    private final List<ParkingLot> managedParkingLots;
 
-    public StandardParkingBoy() {
+    public StandardParkingBoy(List <ParkingLot> managedParkingLots) {
+        this.managedParkingLots = managedParkingLots;
     }
 
-    public static ParkingTicket park(ParkingLot parkingLot, Car car) {
-        return parkingLot.park(car);
+    public ParkingTicket park(Car car) {
+        ParkingLot availableParkingLot = managedParkingLots.stream()
+                        .filter(parkingLot -> !parkingLot.isFull())
+                        .findFirst()
+                        .orElse(null);
+        if(availableParkingLot == null)
+            throw new NoAvailablePositionException();
+        return availableParkingLot.park(car);
     }
 
-    public static Car fetch(ParkingLot parkingLot, ParkingTicket parkingTicket) {
-        return parkingLot.fetch(parkingTicket);
+    public Car fetch(ParkingTicket parkingTicket) {
+        ParkingLot parkingLotParked = managedParkingLots.stream()
+                        .filter(parkingLot -> parkingLot.containsCarForTicket(parkingTicket))
+                        .findFirst()
+                        .orElse(null);
+        if(parkingLotParked == null)
+            throw new UnrecognizedTicketException();
+        return parkingLotParked.fetch(parkingTicket);
     }
 }

@@ -29,14 +29,18 @@ public class ParkingLot {
         return generatedTicket;
     }
 
-    private boolean isFull() {
+    public boolean isFull() {
         return ticketAssignment.size() == capacity;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if(!ticketAssignment.containsKey(parkingTicket)){
+        if(!containsCarForTicket(parkingTicket)){
             throw new UnrecognizedTicketException();
         }
         return ticketAssignment.remove(parkingTicket);
+    }
+
+    public boolean containsCarForTicket(ParkingTicket parkingTicket) {
+        return ticketAssignment.containsKey(parkingTicket);
     }
 }
