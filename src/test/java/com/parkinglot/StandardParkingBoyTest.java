@@ -14,13 +14,14 @@ public class StandardParkingBoyTest {
     private StandardParkingBoy standardParkingBoy;
     private ParkingLot parkingLot1;
     private ParkingLot parkingLot2;
+    private List<ParkingLot> managedParkingLot;
     private Car car;
 
     @BeforeEach
     void initializeGiven(){
         parkingLot1 = new ParkingLot();
         parkingLot2 = new ParkingLot();
-        List<ParkingLot> managedParkingLot = List.of(parkingLot1, parkingLot2);
+        managedParkingLot = List.of(parkingLot1, parkingLot2);
 
         standardParkingBoy = new StandardParkingBoy(managedParkingLot);
         car = new Car();
@@ -79,7 +80,7 @@ public class StandardParkingBoyTest {
     @Test
     void should_return_noAvailablePositionException_when_park_given_standardParkingBoy_car_and_maxed_out_parkingLot() {
         parkingLot1 = new ParkingLot(1);
-        List<ParkingLot> managedParkingLot = List.of(parkingLot1);
+        managedParkingLot = List.of(parkingLot1);
         standardParkingBoy = new StandardParkingBoy(managedParkingLot);
         Car nextCar = new Car();
 
@@ -96,5 +97,18 @@ public class StandardParkingBoyTest {
         standardParkingBoy.park(car);
         Assertions.assertEquals(9, parkingLot1.getAvailableCapacity());
         Assertions.assertEquals(10, parkingLot2.getAvailableCapacity());
+    }
+
+    @Test
+    void should_put_car_in_second_parking_lot_when_park_given_standardParkingBoy_two_parkingLots_with_one_full_parkingLot_and_car() {
+        parkingLot1 = new ParkingLot(1);
+        managedParkingLot = List.of(parkingLot1,parkingLot2);
+        standardParkingBoy = new StandardParkingBoy(managedParkingLot);
+        Car secondCar = new Car();
+
+        standardParkingBoy.park(car);
+        standardParkingBoy.park(secondCar);
+
+        Assertions.assertEquals(9, parkingLot2.getAvailableCapacity());
     }
 }
