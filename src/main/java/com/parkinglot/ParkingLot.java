@@ -43,4 +43,8 @@ public class ParkingLot {
     public boolean containsCarForTicket(ParkingTicket parkingTicket) {
         return ticketAssignment.containsKey(parkingTicket);
     }
+
+    public int getAvailableCapacity() {
+        return capacity - ticketAssignment.size();
+    }
 }

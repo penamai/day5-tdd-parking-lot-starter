@@ -90,4 +90,11 @@ public class StandardParkingBoyTest {
 
         Assertions.assertEquals("No available position.", noAvailablePositionException.getMessage());
     }
+
+    @Test
+    void should_put_car_in_first_parking_lot_when_park_given_standardParkingBoy_two_parkingLots_and_car() {
+        standardParkingBoy.park(car);
+        Assertions.assertEquals(9, parkingLot1.getAvailableCapacity());
+        Assertions.assertEquals(10, parkingLot2.getAvailableCapacity());
+    }
 }
