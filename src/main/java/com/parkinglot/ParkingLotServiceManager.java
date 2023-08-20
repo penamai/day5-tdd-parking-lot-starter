@@ -2,6 +2,7 @@ package com.parkinglot;
 
 import com.parkinglot.exceptions.NoAvailablePositionException;
 import com.parkinglot.exceptions.UnrecognizedTicketException;
+import com.parkinglot.parkingboys.StandardParkingBoy;
 
 import java.util.ArrayList;
 import java.util.List;

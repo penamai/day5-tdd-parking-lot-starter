@@ -1,11 +1,15 @@
-package com.parkinglot;
+package com.parkinglot.parkingboys;
 
+import com.parkinglot.Car;
+import com.parkinglot.ParkingBoy;
+import com.parkinglot.ParkingLot;
+import com.parkinglot.ParkingTicket;
 import com.parkinglot.exceptions.NoAvailablePositionException;
 
 import java.util.Comparator;
 import java.util.List;
 
-public class SmartParkingBoy extends ParkingBoy{
+public class SmartParkingBoy extends ParkingBoy {
     public SmartParkingBoy(List<ParkingLot> managedParkingLots) {
         super(managedParkingLots);
     }
