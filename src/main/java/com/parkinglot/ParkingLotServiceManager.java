@@ -6,11 +6,12 @@ import com.parkinglot.exceptions.UnrecognizedTicketException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLotServiceManager {
+public class ParkingLotServiceManager extends StandardParkingBoy {
 
     private final List<ParkingBoy> managementList;
 
-    public ParkingLotServiceManager(){
+    public ParkingLotServiceManager(List <ParkingLot> managedParkingLots){
+        super(managedParkingLots);
         managementList = new ArrayList<>();
     }
 
