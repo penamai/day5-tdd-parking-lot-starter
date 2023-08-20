@@ -31,7 +31,8 @@ public class ParkingLotServiceManagerTest {
         List<ParkingLot> managedParkingLots = List.of(parkingLot);
         ParkingBoy parkingBoy = new StandardParkingBoy(managedParkingLots);
         List<ParkingLot> managedParkingLotsByServiceManager = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);        parkingLotServiceManager.addToManagementList(parkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);
+        parkingLotServiceManager.addToManagementList(parkingBoy);
         Car car = new Car();
 
         ParkingTicket parkingTicket = parkingLotServiceManager.askToPark(car);
@@ -49,7 +50,8 @@ public class ParkingLotServiceManagerTest {
         ParkingBoy secondParkingBoy = new SmartParkingBoy(secondManagedParkingLots);
 
         List<ParkingLot> managedParkingLotsByServiceManager = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);        parkingLotServiceManager.addToManagementList(firstParkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);
+        parkingLotServiceManager.addToManagementList(firstParkingBoy);
         parkingLotServiceManager.addToManagementList(secondParkingBoy);
 
         Car firstCar = new Car();
@@ -75,7 +77,8 @@ public class ParkingLotServiceManagerTest {
         ParkingBoy secondParkingBoy = new SmartParkingBoy(secondManagedParkingLots);
 
         List<ParkingLot> managedParkingLotsByServiceManager = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);        parkingLotServiceManager.addToManagementList(firstParkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);
+        parkingLotServiceManager.addToManagementList(firstParkingBoy);
         parkingLotServiceManager.addToManagementList(secondParkingBoy);
 
         ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
@@ -96,7 +99,8 @@ public class ParkingLotServiceManagerTest {
         ParkingBoy secondParkingBoy = new SmartParkingBoy(secondManagedParkingLots);
 
         List<ParkingLot> managedParkingLotsByServiceManager = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);        parkingLotServiceManager.addToManagementList(firstParkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);
+        parkingLotServiceManager.addToManagementList(firstParkingBoy);
         parkingLotServiceManager.addToManagementList(secondParkingBoy);
 
         Car car = new Car();
@@ -119,7 +123,8 @@ public class ParkingLotServiceManagerTest {
         ParkingBoy secondParkingBoy = new SmartParkingBoy(secondManagedParkingLots);
 
         List<ParkingLot> managedParkingLotsByServiceManager = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);        parkingLotServiceManager.addToManagementList(firstParkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(managedParkingLotsByServiceManager);
+        parkingLotServiceManager.addToManagementList(firstParkingBoy);
         parkingLotServiceManager.addToManagementList(secondParkingBoy);
 
         Car firstCar = new Car();
