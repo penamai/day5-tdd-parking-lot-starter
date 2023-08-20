@@ -14,12 +14,9 @@ public class SmartParkingBoy {
 
     public ParkingTicket park(Car car) {
         ParkingLot availableParkingLot = managedParkingLots.stream()
-                        .filter(parkingLot -> !parkingLot.isFull())
-                        .sorted(Comparator
-                                .comparingInt(ParkingLot::getAvailableCapacity)
-                                .reversed())
-                        .findFirst()
-                        .orElse(null);
+                .filter(parkingLot -> !parkingLot.isFull())
+                .max(Comparator.comparingInt(ParkingLot::getAvailableCapacity))
+                .orElse(null);
         if(availableParkingLot == null)
             throw new NoAvailablePositionException();
         return availableParkingLot.park(car);
