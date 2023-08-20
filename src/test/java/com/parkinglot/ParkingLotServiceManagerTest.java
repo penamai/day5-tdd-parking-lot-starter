@@ -18,4 +18,18 @@ public class ParkingLotServiceManagerTest {
 
         Assertions.assertNotNull(parkingLotServiceManager.getManagementList());
     }
+
+    @Test
+    void should_return_parkingTicket_when_askToPark_given_parkingLotServiceManager_parkingBoy_and_car() {
+        ParkingLot parkingLot = new ParkingLot();
+        List<ParkingLot> managedParkingLots = List.of(parkingLot);
+        ParkingBoy parkingBoy = new StandardParkingBoy(managedParkingLots);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        parkingLotServiceManager.addToManagementList(parkingBoy);
+        Car car = new Car();
+
+        ParkingTicket parkingTicket = parkingLotServiceManager.askToPark(car);
+
+        Assertions.assertNotNull(parkingTicket);
+    }
 }
