@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import com.parkinglot.exceptions.NoAvailablePositionException;
+import com.parkinglot.exceptions.UnrecognizedTicketException;
 
 import java.util.Comparator;
 import java.util.List;
@@ -21,5 +22,15 @@ public class SuperParkingBoy {
         if(availableParkingLot == null)
             throw new NoAvailablePositionException();
         return availableParkingLot.park(car);
+    }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+        ParkingLot parkingLotParked = managedParkingLots.stream()
+                        .filter(parkingLot -> parkingLot.containsCarForTicket(parkingTicket))
+                        .findFirst()
+                        .orElse(null);
+        if(parkingLotParked == null)
+            throw new UnrecognizedTicketException();
+        return parkingLotParked.fetch(parkingTicket);
     }
 }
