@@ -34,6 +34,8 @@ public class ParkingLotServiceManager {
                 break;
             }
         }
+        if(parkingTicket == null)
+            throw new NoAvailablePositionException();
         return parkingTicket;
     }
 
@@ -49,6 +51,8 @@ public class ParkingLotServiceManager {
                 break;
             }
         }
+        if(car == null)
+            throw new UnrecognizedTicketException();
         return car;
     }
 }
