@@ -9,6 +9,7 @@ public class StandardParkingBoy extends ParkingBoy {
         super(managedParkingLots);
     }
 
+    @Override
     public ParkingTicket park(Car car) {
         ParkingLot availableParkingLot = managedParkingLots.stream()
                         .filter(parkingLot -> !parkingLot.isFull())

@@ -11,6 +11,10 @@ public class ParkingBoy {
         this.managedParkingLots = managedParkingLots;
     }
 
+    public ParkingTicket park(Car car){
+        return null;
+    }
+
     public Car fetch(ParkingTicket parkingTicket) {
         ParkingLot parkingLotParked = managedParkingLots.stream()
                 .filter(parkingLot -> parkingLot.containsCarForTicket(parkingTicket))
