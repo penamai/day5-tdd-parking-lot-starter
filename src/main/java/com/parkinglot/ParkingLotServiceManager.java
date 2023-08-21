@@ -23,7 +23,7 @@ public class ParkingLotServiceManager extends StandardParkingBoy {
     public void addToManagementList(ParkingBoy parkingBoy) {
         managementList.add(parkingBoy);
     }
-
+    //todo for this one although already good i think can be improved into something different
     public ParkingTicket askToPark(Car car) {
         ParkingTicket parkingTicket = null;
         for (ParkingBoy parkingBoy : managementList) {
